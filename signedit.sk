@@ -1,7 +1,7 @@
 command /signedit <integer> [<text>]:
 	usage: &cUsage: /signedit (line) (newtext)
-  permission: signedit.use
-  permission message: &cPermission denied.
+	permission: signedit.use
+	permission message: &cPermission denied.
 	trigger:
 		if target block is sign:
 			if arg-1 is between 1 and 4:
