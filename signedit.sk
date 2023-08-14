@@ -1,4 +1,4 @@
-command /signedit <integer> <text>:
+command /signedit <integer> [<text>]:
 	usage: &cUsage: /signedit (line) (newtext)
   permission: signedit.use
   permission message: &cPermission denied.
@@ -8,7 +8,10 @@ command /signedit <integer> <text>:
 				set {_blockx} to floor(x location of target block)
 				set {_blocky} to floor(y location of target block)
 				set {_blockz} to floor(z location of target block)
-				make player execute command "/data merge block %{_blockx}% %{_blocky}% %{_blockz}% {Text%arg-1%:'{""text"":""%arg-2%""}'}"
+				if arg-2 is not set:
+					make player execute command "/data merge block %{_blockx}% %{_blocky}% %{_blockz}% {Text%arg-1%:'{""text"":""""}'}"
+				else:
+					make player execute command "/data merge block %{_blockx}% %{_blocky}% %{_blockz}% {Text%arg-1%:'{""text"":""%arg-2%""}'}"
 			else:
 				send "&cArgument 1 needs to be between 1 and 4."
 		else:
